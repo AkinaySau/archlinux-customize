@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+echo -n "Please enter project name: "
+read projectname
+
+ADMIN_PASS="$(openssl rand -base64 12)"
+FILEKEYS="${projectname}.keys"
+
+exec 1> "project.keys"
+
+echo "Admin login: "${projectname} 
+echo "Admin pass:  "${ADMIN_PASS} 
+echo "Admin email: i-wolhw-tm+${projectname}@ya.ru"
+echo "========================================"
+echo "Local database host:     localhost"
+echo "Local database db name:  "${projectname} 
+echo "Local database login:    "${projectname} 
+echo "Local database password: "${projectname} 
