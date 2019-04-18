@@ -5,6 +5,12 @@
 pacman -Suy slim awesome qterminal git
 ```
 
+## Структура
+Структура репозитория:
+ - /data - дирректория с данными которые будут генерироваться скриптами
+ - /awesome-theme - тема awesome-wm 
+
+
 ## Awesome
  - **./awesome-theme** - тема для awesome
  - **** - 
