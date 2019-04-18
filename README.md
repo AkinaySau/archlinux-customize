@@ -2,7 +2,9 @@
 Мой пакет для арча
 
 ```
-pacman -Suy slim awesome qterminal git
+$sudo pacman -Suy slim awesome qterminal git lxappearance-gtk3 zsh luarocks sudo nginx php
+
+$ sudo luarocks install luafilesystem
 ```
 
 ## Awesome
