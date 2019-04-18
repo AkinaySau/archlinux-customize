@@ -29,15 +29,14 @@ echo "================================================="
 echo -n "Please enter root user MySQL password: "
 read -s ROOT_PASS
 
-#mysql -uroot -p${ROOT_PASS} -e "CREATE DATABASE ${DB_NAME} /*\!40100 DEFAULT CHARACTER SET utf8 */;"
-#mysql -uroot -p${ROOT_PASS} -e "CREATE USER ${USER_NAME}@localhost IDENTIFIED BY '${USER_PASS}';"
-#mysql -uroot -p${ROOT_PASS} -e "GRANT ALL PRIVILEGES ON ${DB_NAME}.* TO '${USER_NAME}'@'localhost';"
-#mysql -uroot -p${ROOT_PASS} -e "FLUSH PRIVILEGES;"
+mysql -uroot -p${ROOT_PASS} -e "CREATE DATABASE ${DB_NAME} /*\!40100 DEFAULT CHARACTER SET utf8 */;"
+mysql -uroot -p${ROOT_PASS} -e "CREATE USER ${USER_NAME}@localhost IDENTIFIED BY '${USER_PASS}';"
+mysql -uroot -p${ROOT_PASS} -e "GRANT ALL PRIVILEGES ON ${DB_NAME}.* TO '${USER_NAME}'@'localhost';"
+mysql -uroot -p${ROOT_PASS} -e "FLUSH PRIVILEGES;"
 
 DATA_DIR="${HOME}/.sau/data/mysql"
 if [[ -d ${DATA_DIR} ]]; then
     mkdir -p ${DATA_DIR}
-    echo "asdasd"
 fi;
 
 KEY_PATH="${DATA_DIR}/${USER_NAME}.txt"
