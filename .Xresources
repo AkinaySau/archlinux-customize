@@ -1,0 +1,14 @@
+! XTerm.vt100.locale: true
+
+! XTerm.vt100.metaSendsEscape: true
+
+! XTerm.vt100.scrollBar: true
+! XTerm.vt100.scrollbar.width: 3 
+
+
+XTerm*font: -*-terminus-medium-r-*-*-14-*-*-*-*-*-iso10646-*
+XTerm*eightBitInput: false
+XTerm*metaSendsEscape: true
+XTerm*utf8: 1
+XTerm*locale: 1
+
