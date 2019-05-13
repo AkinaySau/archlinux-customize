@@ -1,0 +1,52 @@
+#!/usr/bin/env bash
+
+
+if [[ ! -z ${1} ]]; then
+     PROJECT_NAME=${1}
+else
+    echo -n "Please enter project name: "
+    read PROJECT_NAME
+fi
+
+PROJECT_PATH=${PWD}/${PROJECT_NAME}
+ARCHIVE=/tmp/wp.latest.zip
+
+# Check exist directory ######################
+if [[ -d ${PROJECT_NAME} && $(ls -A ${PROJECT_PATH})  ]]; then
+    echo "Directory '${PROJECT_NAME}' is not empty"
+    exit -1
+fi
+##############################################
+
+echo -n "Download Wordpress"
+curl -o ${ARCHIVE} https://wordpress.org/latest.zip
+
+echo "Extract..."
+unzip -q ${ARCHIVE} -d ${PROJECT_PATH}
+mv ${PROJECT_PATH}/wordpress/* ${PROJECT_PATH}
+rm -rdf ${PROJECT_PATH}/wordpress
+rm ${ARCHIVE}
+
+########################################################################################################################
+read -p "Generate keys for admin? (Y/n) " YN
+case "${YN}" in
+    n|N)
+        echo "Skip generate keys"
+        ;;
+    *)
+        cd ${PROJECT_PATH}
+        FILE_KEYS=$(create-project-keys ${PROJECT_NAME})
+        echo ${FILE_KEYS}
+        ;;
+esac
+########################################################################################################################
+read -p "Create database and user(use 'mysql-create-user')? (Y/n)" YN
+case "${YN}" in
+    n|N)
+        echo "Skip crete db"
+        ;;
+    *)
+        cd ${PROJECT_PATH}
+        exec mysql-create-user ${PROJECT_NAME} ${PROJECT_NAME}'.keys'
+        ;;
+esac

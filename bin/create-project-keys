@@ -1,17 +1,20 @@
 #!/usr/bin/env bash
-echo -n "Please enter project name: "
-read projectname
+
+if [[ ! -z ${1} ]]; then
+     PROJECT_NAME=${1}
+else
+    echo -n "Please enter project name: "
+    read PROJECT_NAME
+fi
 
 ADMIN_PASS="$(openssl rand -base64 12)"
-FILEKEYS="${projectname}.keys"
 
-exec 1> "project.keys"
 
-echo "Admin login: "${projectname} 
-echo "Admin pass:  "${ADMIN_PASS} 
-echo "Admin email: i-wolhw-tm+${projectname}@ya.ru"
-echo "========================================"
-echo "Local database host:     localhost"
-echo "Local database db name:  "${projectname} 
-echo "Local database login:    "${projectname} 
-echo "Local database password: "${projectname} 
+
+FILE_KEYS="${PROJECT_NAME}.keys"
+
+echo "Admin login: ${PROJECT_NAME}" 1>> ${FILE_KEYS}
+echo "Admin pass:  ${ADMIN_PASS}" 1>> ${FILE_KEYS}
+echo "Admin email: i-wolhw-tm+${PROJECT_NAME}@ya.ru" 1>> ${FILE_KEYS}
+
+echo "Keys save in file '${FILE_KEYS}'"

@@ -5,31 +5,26 @@
 if [[ ! -z ${1} ]]; then
      USER_NAME=${1}
 else
-    echo -n "Please enter username: "
-    read USER_NAME
+    read -p "Please enter username: " USER_NAME
 fi
 USER_NAME=${USER_NAME//[^a-zA-Z0-9]/_}
 
 #setup database name
-echo -n "Please enter database name[default: ${USER_NAME}]: "
-read DB_NAME
+read -t 5 -p "Please enter database name[default: ${USER_NAME}]: " DB_NAME
 if [[ -z ${DB_NAME} ]]; then
     DB_NAME=${USER_NAME}
 fi
 
 #setup password
-echo -n "Please enter password[default: random]: "
-read USER_PASS
+read -p "Please enter password[default: random]: " USER_PASS
 if [[ -z ${USER_PASS} ]]; then
     USER_PASS=$(openssl rand -base64 12)
 fi
 
 echo "================================================="
 
-echo -n "Please enter root user MySQL password: "
-read -s ROOT_PASS
+read -s -p "Please enter root user MySQL password: " ROOT_PASS
 echo
-
 mysql -uroot -p${ROOT_PASS} -e "CREATE DATABASE ${DB_NAME} /*\!40100 DEFAULT CHARACTER SET utf8 */;"        || exit
 mysql -uroot -p${ROOT_PASS} -e "CREATE USER ${USER_NAME}@localhost IDENTIFIED BY '${USER_PASS}';"           || exit
 mysql -uroot -p${ROOT_PASS} -e "GRANT ALL PRIVILEGES ON ${DB_NAME}.* TO '${USER_NAME}'@'localhost';"        || exit
@@ -42,10 +37,19 @@ fi;
 
 KEY_PATH="${DATA_DIR}/${USER_NAME}.txt"
 
-echo ${KEY_PATH}
+#exec 1> ${KEY_PATH}
+echo "Host:     localhost" 1>> ${KEY_PATH}
+echo "Database: ${DB_NAME}" 1>> ${KEY_PATH}
+echo "User:     ${USER_NAME}" 1>> ${KEY_PATH}
+echo "Password: ${USER_PASS}" 1>> ${KEY_PATH}
 
-exec 1> ${KEY_PATH}
-echo "Host:     localhost"
-echo "Database: ${DB_NAME}"
-echo "User:     ${USER_NAME}"
-echo "Password: ${USER_PASS}"
+
+echo -n "Keys for user save in ${KEY_PATH}"
+
+if [[ -n ${2} ]]; then
+    echo
+    echo -n "... and copy to '${2}'"
+    echo "== Database ==================================" 1>> ${2}
+    cat ${KEY_PATH} 1>> ${2}
+fi
+
