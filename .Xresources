@@ -3,9 +3,9 @@
 ! XTerm.vt100.metaSendsEscape: true
 
 ! XTerm.vt100.scrollBar: true
-! XTerm.vt100.scrollbar.width: 3 
+! XTerm.vt100.scrollbar.width: 3
 
-
+! приведение терминала к нормальному читаемому виду
 XTerm*font: -*-terminus-medium-r-*-*-14-*-*-*-*-*-iso10646-*
 XTerm*eightBitInput: false
 XTerm*metaSendsEscape: true

@@ -1,11 +1,16 @@
 # archlinux-customize
 Мой пакет для арча
 
-```
-$sudo pacman -Suy slim awesome qterminal git lxappearance-gtk3 zsh luarocks sudo nginx php
+```bash
+sudo pacman -Suy slim awesome qterminal git lxappearance-gtk3 zsh luarocks sudo nginx php gnome-keyring
+sudo luarocks install luafilesystem
 
-$ sudo luarocks install luafilesystem
+ln -sf ~/.sau/.xinitrc ~
+ln -sf ~/.sau/.Xresources ~
 ```
+
+
+
 
 ## Структура
 Структура репозитория:
