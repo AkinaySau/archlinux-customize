@@ -2,15 +2,25 @@
 Мой пакет для арча
 
 ```bash
-sudo pacman -Suy slim awesome qterminal git lxappearance-gtk3 zsh luarocks sudo nginx php gnome-keyring
+sudo pacman -Suy slim awesome qterminal git lxappearance-gtk3 zsh luarocks sudo nginx php gnome-keyring volumeicon
 sudo luarocks install luafilesystem
 
 ln -sf ~/.sau/.xinitrc ~
 ln -sf ~/.sau/.Xresources ~
 ```
 
-
-
+## Иконки [Ark](https://github.com/horst3180/arc-icon-theme#installation)
+```bash
+cd /tmp 
+git clone https://github.com/horst3180/arc-icon-theme --depth 1 && cd arc-icon-theme
+./autogen.sh --prefix=/usr
+sudo make install
+cd
+``` 
+## Темы
+```bash
+yaourt -S zuki-themes --noconfirm
+```
 
 ## Структура
 Структура репозитория:
@@ -32,3 +42,6 @@ ln -sf ~/.sau/.Xresources ~
  - nginx
  - php
  - unbound
+
+
+##### [more](http://sollus-soft.blogspot.com/2017/03/awesome-wm-4.html)

@@ -46,5 +46,9 @@ exec setxkbmap -layout us,ru -variant -option grp:alt_shift_toggle,terminate:ctr
 ## Compton - красивости ################################################################################################
 exec compton --config ~/.sau/compton.conf &
 
+## Иконка звука ########################################################################################################
+volumeicon &
+
+
 ## Зпускаем awesome-wm
 exec awesome
