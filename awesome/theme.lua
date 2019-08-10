@@ -8,8 +8,7 @@ local theme = dofile(themes_path .. "gtk/theme.lua")
 local path = '~/.sau/awesome/'
 
 theme.wallpaper = path .. '/image/wallpaper.jpg'
-theme.border_width = dpi(0)
-theme.useless_gap = dpi(10)
-
+theme.border_width = dpi(2)
+theme.useless_gap = dpi(3)
 
 return theme
