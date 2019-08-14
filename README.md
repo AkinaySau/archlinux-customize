@@ -7,6 +7,10 @@ sudo luarocks install luafilesystem
 
 ln -sf ~/.sau/.xinitrc ~
 ln -sf ~/.sau/.Xresources ~
+ln -sf ~/.sau/compton.conf ~/.config/compton.conf
+
+yaourt --noconfirm -S i3lock-fancy-multimonitor-git 
+
 ```
 
 ## Иконки [Ark](https://github.com/horst3180/arc-icon-theme#installation)

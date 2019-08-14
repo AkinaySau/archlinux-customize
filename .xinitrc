@@ -38,10 +38,12 @@ fi
 eval $(/usr/bin/gnome-keyring-daemon --start --components=pkcs11,secrets,ssh)
 export SSH_AUTH_SOCK
 
-#xautolock -time 10 -locker i3lock-monitor &
+xautolock -time 3 -locker i3lock-fancy &
 
 ## Переключение языков ru-en ###########################################################################################
-exec setxkbmap -layout us,ru -variant -option grp:alt_shift_toggle,terminate:ctrl_alt_bksp &
+setxkbmap -layout us,ru -variant -option grp:alt_shift_toggle,terminate:ctrl_alt_bksp &
+
+[[ -f ~/.Xresources ]] && xrdb -merge -I$HOME ~/.Xresources
 
 ## Compton - красивости ################################################################################################
 exec compton --config ~/.sau/compton.conf &
