@@ -12,3 +12,5 @@ XTerm*metaSendsEscape: true
 XTerm*utf8: 1
 XTerm*locale: 1
 
+Xcursor.theme: ArchCursorTheme
+Xcursor.size: 22

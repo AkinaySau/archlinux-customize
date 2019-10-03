@@ -2,7 +2,7 @@
 Мой пакет для арча
 
 ```bash
-sudo pacman -Suy slim awesome qterminal git lxappearance-gtk3 zsh luarocks sudo nginx php gnome-keyring volumeicon
+sudo pacman -Suy slim awesome qterminal git lxappearance-gtk3 zsh luarocks sudo nginx php gnome-keyring volumeicon polkit-gnome
 sudo luarocks install luafilesystem
 
 ln -sf ~/.sau/.xinitrc ~
